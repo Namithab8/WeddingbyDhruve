@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap');
 
 :root {
   --burgundy: #787898;
@@ -89,9 +89,10 @@ a { color: var(--burgundy); }
   transition: transform .9s cubic-bezier(.22, .8, .3, 1);
   background: #fff;
   display: flex; align-items: center; justify-content: center;
+overflow-y: auto;
 }
 .stage-panel .wedding-company {
-  width: 90%; max-width: 1710px; height: 500px;
+  width: 90%; max-width: 1710px; min-height: 500px; height: auto;
   margin: 0; padding: 55px;
   background: #5c5c86;
   border-radius: 24px;
@@ -189,7 +190,7 @@ a { color: var(--burgundy); }
 /* ---------- Wedding Company ---------- */
 .wedding-company {
   position: relative; z-index: 2;
-  width: 90%; max-width: 1710px; height: 500px;
+  width: 90%; max-width: 1710px; min-height: 500px; height: auto;
   margin: 60px auto; padding: 55px;
   background: #5c5c86;
   border-radius: 24px;
@@ -322,7 +323,7 @@ a { color: var(--burgundy); }
 }
 .how-it-works::before,
 .how-it-works::after {
-  content: 'âœ¿';
+  content: '✦';
   position: absolute;
   font-size: 120px;
   color: rgba(213, 173, 101, .10);
@@ -341,8 +342,7 @@ a { color: var(--burgundy); }
   font-weight: 600;
   color: #4a3b45;
   margin: 0;
-  text-align: 0ente;
-  margin: 0 autor;
+  text-align: center;
 }
 .hiw-flower { color: #D5AD65; font-size: 26px; }
 .hiw-timeline {
@@ -626,18 +626,66 @@ a { color: var(--burgundy); }
   color: var(--burgundy); font: 500 26px/1.4 'Cormorant Garamond', serif; margin: 10px 0; text-align: center;
 }
 
+/* ---------- Footer ---------- */
+.footer {
+  background: #102653; color: rgba(255, 255, 255, .85);
+  padding: 56px 4vw 0;
+}
+.footer-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px; padding-bottom: 48px;
+}
+.footer-brand .footer-logo {
+  font: 500 clamp(24px, 2.4vw, 32px)/1.2 'Cormorant Garamond', serif;
+  color: #C5A15A; display: block; margin-bottom: 16px;
+}
+.footer-brand p {
+  color: rgba(255, 255, 255, .7); font-size: 14px; line-height: 1.8; margin: 0; max-width: 320px;
+}
+.footer-col h4 {
+  font-size: 12px; letter-spacing: 2px; font-weight: 600;
+  color: #C5A15A; margin: 0 0 20px; text-transform: uppercase;
+}
+.footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.footer-col a {
+  color: rgba(255, 255, 255, .75); text-decoration: none; font-size: 14px;
+  transition: color .25s ease;
+}
+.footer-col a:hover { color: #C5A15A; }
+.footer-social-links { display: flex; flex-direction: column; gap: 12px; }
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  max-width: 1400px; margin: 0 auto;
+  padding: 22px 0; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  font-size: 12.5px; color: rgba(255, 255, 255, .55); letter-spacing: .4px;
+}
+@media (max-width: 960px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .footer { padding: 44px 6vw 0; }
+  .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+  .footer-bottom { flex-direction: column; gap: 8px; }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
   .header { flex-direction: column; min-height: auto; padding: 12px 3vw; gap: 10px; }
-  .brand { width: 220px; min-height: 70px; grid-template-columns: 34px auto; grid-template-rows: 38px 14px; padding: 4px 16px 4px 20px; }
-  .flower { font-size: 24px; line-height: 38px; }
-  .brandName { font-size: 38px; }
-  .brand small { font-size: 7.5px; }
+  .brand { width: auto; min-height: 64px; padding: 4px 8px; }
+  .brand-logo { width: 92px; height: 48px; }
+  .nav-list { justify-content: center; }
   .nav { padding: 10px 14px; font-size: 11px; }
   .main-content { padding-top: 190px; }
   .home { min-height: calc(100vh - 190px); }
   .media-page, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
   .media-left { text-align: center; }
+  .wedding-company { padding: 44px 7vw; }
+  .wc2-head h2, .hiw-head h2 { font-size: clamp(22px, 6vw, 30px); }
+  .hiw-content { padding: 24px 22px; }
+  .contact-form { padding: 26px 20px; }
+  .submit-btn { width: 100%; text-align: center; }
 }
 @media (max-width: 860px) {
   body::before, body::after { display: none; }
@@ -645,7 +693,36 @@ a { color: var(--burgundy); }
   .ts-line { flex-basis: 40px; }
 }
 @media (max-width: 640px) {
+  body { overflow-x: hidden; }
+  .brand { align-self: center; margin: 0 auto; }
+
+  .stage-street .home { flex: 0 0 auto; min-height: 0; transform: none; padding: 4px 0 6px; }
+  .street-viewport { margin-bottom: 8px; }
+  .stage-street .title-section { position: relative; }
+  .title-section { padding: 4px 4vw 8px; }
+  .ts-inner { padding: 0 4vw 18px; }
+  .ts-heading { margin-bottom: 8px; }
+  .ts-sub { margin-top: 6px; }
+  .why-choose { padding: 56px 0 64px; }
+  .street-copy { width: 100%; }
   .street-copy img { max-height: none; }
   .hint { margin-right: 3vw; font-size: 11px; padding: 10px 16px; }
   .page { padding: 40px 5vw 70px; }
+  .page h1, .about-page h1 { font-size: clamp(30px, 9vw, 40px); }
+  .media-year { font-size: clamp(64px, 20vw, 96px); }
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .media-right { grid-template-columns: 1fr; }
+  .wc2-card { padding: 34px 26px; }
+  .dest-card, .service-card, .about-card, .team-card { padding: 26px 22px; }
+  .how-it-works::before, .how-it-works::after { display: none; }
+  .hotspot-tip { font-size: 10px; padding: 6px 10px; }
+  .stage-panel { position: fixed; align-items: flex-start; padding: 24px 0; }
+  .stage-panel .wedding-company { margin: 0; padding: 40px 6vw 56px; }
+  .wc-grid { gap: 28px; }
+  .wc-image { order: 0; }
+}
+@media (max-width: 420px) {
+  .about-grid, .team-grid, .service-grid, .dest-grid { grid-template-columns: 1fr; }
+  .nav { padding: 9px 12px; font-size: 10px; }
+  .brand-logo { width: 80px; height: 42px; }
 }
